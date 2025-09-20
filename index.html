@@ -1,52 +1,160 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Happy Birthday Seejal — Surprise Card</title>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🎂 Happy Birthday Seejal 🎉</title>
   <style>
-    :root{--bg:#0f1724;--card:#0b1220;--accent:#7de3ff;--accent-2:#8a6cff;--glass: rgba(255,255,255,0.06);--muted: rgba(255,255,255,0.6)}
-    *{box-sizing:border-box}html,body{height:100%}body{margin:0;font-family:'Nunito',system-ui;background:var(--bg);color:#e6eef8;display:flex;align-items:center;justify-content:center;padding:32px}
-    .container{width:100%;max-width:900px}
-    .card{background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.04);border-radius:20px;box-shadow:0 10px 40px rgba(2,6,23,0.6);display:flex;flex-direction:row;overflow:hidden}
-    .left,.right{flex:1;padding:32px;display:flex;flex-direction:column;align-items:center;justify-content:center}
-    h1{font-family:'Playfair Display',serif;font-size:36px;margin:0 0 10px 0}
-    p{margin:0 0 20px 0;color:var(--muted)}
-    .wish-card{width:100%;max-width:380px;height:350px;border-radius:16px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:22px;position:relative;overflow:hidden;background:linear-gradient(135deg,rgba(125,227,255,0.06),rgba(138,108,255,0.06));border:1px solid rgba(255,255,255,0.03)}
-    .wish-card .title{font-family:'Playfair Display',serif;font-size:28px;margin-bottom:6px}
-    .wish-card .sub{color:var(--muted);font-size:14px;margin-bottom:12px}
-    .gift{width:120px;height:120px;border-radius:12px;background:linear-gradient(180deg,var(--accent),var(--accent-2));display:flex;align-items:center;justify-content:center;color:#031826;font-weight:900;font-size:34px;box-shadow:0 18px 40px rgba(138,108,255,0.12)}
-    .qr{margin-top:20px;text-align:center}
-    .qr img{border-radius:12px}
-    .qr div{font-size:13px;color:var(--muted);margin-top:6px}
-    @media(max-width:760px){.card{flex-direction:column}}
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+      overflow: hidden;
+    }
+    .container {
+      background: rgba(255,255,255,0.95);
+      padding: 30px 25px;
+      border-radius: 20px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+      max-width: 420px;
+      width: 90%;
+      animation: fadeIn 1s ease-in-out;
+    }
+    h1 {
+      color: #ff4081;
+      font-size: 1.6rem;
+      margin-bottom: 20px;
+      animation: pop 1.5s infinite alternate;
+    }
+    @keyframes pop {
+      from { transform: scale(1); }
+      to { transform: scale(1.05); }
+    }
+    .countdown {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+    .time-box {
+      background: linear-gradient(145deg, #ffdde1, #ee9ca7);
+      border-radius: 15px;
+      flex: 1;
+      margin: 0 6px;
+      padding: 12px 6px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      color: #fff;
+    }
+    .time-box h2 {
+      margin: 0;
+      font-size: 1.6rem;
+    }
+    .time-box small {
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+    .message {
+      margin-top: 15px;
+      font-size: 1rem;
+      color: #6a1b9a;
+    }
+    .btn {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 1rem;
+      color: #fff;
+      background: #ff4081;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .btn:hover {
+      background: #e91e63;
+    }
+    .gift-card {
+      display: none;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 1.3rem;
+      padding: 20px;
+    }
+    .gift-card h1 {
+      font-size: 2rem;
+      margin-bottom: 15px;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
   </style>
 </head>
 <body>
-  <div class="container">
-    <div class="card">
-      <div class="left">
-        <h1>🎉 Happy Birthday Seejal 🎂</h1>
-        <p>Wishing you joy, love & magic on your special day!</p>
-        <div class="qr">
-          <!-- QR code links to a short surprise message URL (you can change the 'data' value below) -->
-          <img src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=https%3A%2F%2Fexample.com%2Fseejal-surprise" alt="QR Code" />
-          <div>Scan me 🎁</div>
-        </div>
+  <div class="container" id="mainPage">
+    <h1>🎉 Seejal, Your Surprise Awaits! 🎂</h1>
+    <div class="countdown">
+      <div class="time-box">
+        <h2 id="minutes">5</h2>
+        <small>Minutes</small>
       </div>
-      <div class="right">
-        <div class="wish-card">
-          <div style="position:absolute;inset:0;opacity:0.06;background:radial-gradient(circle at 20% 10%, #7de3ff 0, transparent 12%), radial-gradient(circle at 80% 90%, #8a6cff 0, transparent 12%);filter:blur(40px)"></div>
-          <div style="position:relative;z-index:2;text-align:center;width:100%">
-            <div class="title">Happy Birthday</div>
-            <div class="sub">To Seejal with ❤</div>
-            <div class="gift">🎁</div>
-            <div style="margin-top:12px;color:var(--muted);font-size:13px">Best Wishes</div>
-          </div>
-        </div>
+      <div class="time-box">
+        <h2 id="seconds">0</h2>
+        <small>Seconds</small>
       </div>
     </div>
+    <p class="message">Countdown to your surprise!</p>
+    <button class="btn" id="surpriseBtn">Open Your Surprise 🎁</button>
   </div>
+
+  <div class="gift-card" id="giftCard">
+    <h1>🎂 Happy Birthday Seejal! 🎉</h1>
+    <p>Wishing you a day full of love, joy, and sweet surprises! 💖</p>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+  <script>
+    let totalTime = 5 * 60;
+    const minutesEl = document.getElementById('minutes');
+    const secondsEl = document.getElementById('seconds');
+    const giftCard = document.getElementById('giftCard');
+    const mainPage = document.getElementById('mainPage');
+    const btn = document.getElementById('surpriseBtn');
+
+    function showGiftCard() {
+      mainPage.style.display = 'none';
+      giftCard.style.display = 'flex';
+      confetti({
+        particleCount: 150,
+        spread: 70,
+        origin: { y: 0.6 }
+      });
+    }
+
+    btn.addEventListener('click', showGiftCard);
+
+    const timer = setInterval(() => {
+      let minutes = Math.floor(totalTime / 60);
+      let seconds = totalTime % 60;
+      minutesEl.innerText = minutes;
+      secondsEl.innerText = seconds < 10 ? '0'+seconds : seconds;
+      totalTime--;
+      if(totalTime < 0) {
+        clearInterval(timer);
+        showGiftCard();
+      }
+    }, 1000);
+  </script>
 </body>
 </html>
